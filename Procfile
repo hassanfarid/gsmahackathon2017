@@ -1,1 +1,1 @@
-web: node server/index.js
+web: gunicorn --nodejspath server/ index.js
