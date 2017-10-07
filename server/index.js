@@ -21,17 +21,8 @@ app.get('/',function(req,res) {
 app.post('/merchantpayment/jazz',function(req,res) {
 	res.send(jazz.merchant_payment(req.body));
 });
-
-app.get('/billpayment/telenor',function(req,res) {
-	console.log("listening on 3000 for merchantpayment/telenor");
-	
-	res.send(telenor.bill_payment());
-});
-
-app.get('/merchantpayment/telenor',function(req,res) {
-	console.log("listening on 3000 for merchantpayment/telenor");
-	
-	res.send(telenor.merchant_payment());
+app.post('/billpayment/jazz',function(req,res) {
+	res.send(jazz.bill_payment(req.body));
 });
 
 app.get('/getcompanieslist',function(req,res) {
@@ -40,6 +31,41 @@ app.get('/getcompanieslist',function(req,res) {
 	res.send(telenor.get_companies_list());
 });
 
+app.post('/billinquiry',function(req,res) {
+	console.log("listening on 3000 for billinquiry");
+	
+	res.send(telenor.bill_inquiry(req.body));
+});
+
+app.post('/billpayment/telenor',function(req,res) {
+	console.log("listening on 3000 for billpayment/telenor");
+	
+	res.send(telenor.bill_payment(req.body));
+});
+
+app.post('/merchantpayment/telenor',function(req,res) {
+	console.log("listening on 3000 for merchantpayment/telenor");
+	
+	res.send(telenor.merchant_payment(req.body));
+});
+
+app.post('/moneytransfertoMA/telenor',function(req,res) {
+	console.log("listening on 3000 for moneytransfertoMA/telenor");
+	
+	res.send(telenor.money_transfer_to_MA(req.body));
+});
+
+app.post('/moneytransfertobank/telenor',function(req,res) {
+	console.log("listening on 3000 for moneytransfertobank/telenor");
+	
+	res.send(telenor.money_transfer_to_bank(req.body));
+});
+
+app.post('/sendmoneytoMA/telenor',function(req,res) {
+	console.log("listening on 3000 for sendmoneytoMA/telenor");
+	
+	res.send(telenor.send_money_to_MA(req.body));
+});
 
 app.listen(process.env.PORT || 3000,function(){
 	console.log("listening on 3000");
