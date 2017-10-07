@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-
+import { Dialogs } from '@ionic-native/dialogs';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 /**
  * Generated class for the ScanQrPage page.
@@ -20,7 +21,8 @@ export class ScanQrPage {
   result: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private qrScanner: QRScanner, public toastCtrl: ToastController) {
+    private qrScanner: QRScanner, public toastCtrl: ToastController, private androidPermissions: AndroidPermissions,
+    private dialogs: Dialogs) {
   }
 
   ionViewDidLoad() {
@@ -56,11 +58,19 @@ export class ScanQrPage {
           // camera permission was permanently denied
           // you must use QRScanner.openSettings() method to guide the user to the settings page
           // then they can grant the permission from there
+          this.dialogs.confirm('We need Camera Permission to scan QR Code. Do you want to give permission?', "Permission Required")
+            .then(() => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA))
+            .catch(e => this.navCtrl.pop());
         } else {
           // permission was denied, but not permanently. You can ask for permission again at a later time.
         }
       })
-      .catch((e: any) => console.log('Error is', e));
+      .catch((e: any) => {
+        console.log('Error is', JSON.stringify(e));
+        this.dialogs.confirm('We need Camera Permission to scan QR Code. Do you want to give permission?', "Permission Required")
+          .then(() => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA))
+          .catch(e => this.navCtrl.pop());
+      });
   }
 
 }

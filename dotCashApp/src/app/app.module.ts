@@ -10,7 +10,10 @@ import { GenerateQrPage } from '../pages/generate-qr/generate-qr';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { Dialogs } from '@ionic-native/dialogs';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
@@ -39,6 +42,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     StatusBar,
     SplashScreen,
     QRScanner,
+    Dialogs,
+    AndroidPermissions,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
