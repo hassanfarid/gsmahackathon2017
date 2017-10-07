@@ -1,10 +1,13 @@
 {
-	"name": "dotCashServer",
-	"version": "0.0.1",
-	"dependencies": {
-		"express":"~2.5.8"},
-	"engines": {
-		"node": "0.8.x",
-		"npm": "1.1.x"
-	}
+  "name": "dotCashServer",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "~2.5.8",
+    "sync-request": "^4.1.0"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
 }
