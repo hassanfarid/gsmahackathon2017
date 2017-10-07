@@ -18,6 +18,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 })
 export class ScanQrPage {
 
+  currentStep = 0;
+
   result: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -47,6 +49,7 @@ export class ScanQrPage {
 
             this.qrScanner.hide(); // hide camera preview
             scanSub.unsubscribe(); // stop scanning
+            _component.currentStep++; // show Details
           });
 
           // show camera preview
