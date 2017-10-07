@@ -8,3 +8,4 @@ Mobile Money Hackathon - October 7th and 8th, 2017
  * API Documentation
    * [Telenor](api_documentation/telenor/)
    * [Jazz](api_documentation/jazz/)
+ * [Server side code](server/)
