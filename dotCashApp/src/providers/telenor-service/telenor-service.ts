@@ -44,20 +44,11 @@ export class TelenorServiceProvider extends ServiceProvider {
   }
 
   doMerchantPayment(payload) {
-    const serviceURL = 'billpayment/telenor';
-    return this.http
-      .post(this.baseURL + serviceURL, payload)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
-  doMoneyTransfer(payload) {
     const serviceURL = 'merchantpayment/telenor';
     return this.http
       .post(this.baseURL + serviceURL, payload)
       .map(res => res.json())
       .catch(this.handleError);
-
   }
 
   doMoneyTransferToMA(payload) {
