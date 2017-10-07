@@ -8,7 +8,7 @@
  * Block/stop payment
  * Check status of payment
 
-## Components ([Architecture](arch.jpg))
+## Components ([Architecture](architecture.jpg))
  * Server-Side (API end point)
    * All purpose Queue
    * Task sorter -> add to specific queue

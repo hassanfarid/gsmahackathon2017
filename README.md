@@ -5,3 +5,6 @@ Mobile Money Hackathon - October 7th and 8th, 2017
 
  * [Architecture](architecture.jpg) (suggested)
  * [Data Flow](DataFlow.md)
+ * API Documentation
+   * [Telenor](api_documentation/telenor/)
+   * [Jazz](api_documentation/jazz/)
