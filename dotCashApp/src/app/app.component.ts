@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 import { ScanQrPage } from '../pages/scan-qr/scan-qr';
 import { GenerateQrPage } from '../pages/generate-qr/generate-qr';
 
@@ -16,17 +16,17 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Scan QR', component: ScanQrPage },
-      { title: 'Generate QR', component: GenerateQrPage }
+      { icon: 'home', title: 'Home', component: HomePage },
+      //{ icon: '', title: 'List', component: ListPage },
+      { icon: 'qr-scanner', title: 'Scan QR', component: ScanQrPage },
+      { icon: 'cash', title: 'Generate QR', component: GenerateQrPage }
     ];
 
   }

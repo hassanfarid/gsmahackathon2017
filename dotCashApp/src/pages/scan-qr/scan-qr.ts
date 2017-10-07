@@ -60,7 +60,7 @@ export class ScanQrPage {
           // then they can grant the permission from there
           this.dialogs.confirm('We need Camera Permission to scan QR Code. Do you want to give permission?', "Permission Required")
             .then(() => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA))
-            .catch(e => this.navCtrl.pop());
+            .catch(e => {});
         } else {
           // permission was denied, but not permanently. You can ask for permission again at a later time.
         }
@@ -69,7 +69,7 @@ export class ScanQrPage {
         console.log('Error is', JSON.stringify(e));
         this.dialogs.confirm('We need Camera Permission to scan QR Code. Do you want to give permission?', "Permission Required")
           .then(() => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA))
-          .catch(e => this.navCtrl.pop());
+          .catch(e => {});
       });
   }
 
