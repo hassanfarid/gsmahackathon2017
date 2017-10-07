@@ -16,4 +16,21 @@ export class JazzServiceProvider extends ServiceProvider{
     super();
   }
 
+  doBillPayment(payload) {
+    const serviceURL = 'billpayment/jazz';
+    return this.http
+      .post(this.baseURL + serviceURL, payload)
+      .map(res => res.json())
+      .catch(this.handleError);
+
+  }
+
+  doMerchantPayment(payload) {
+    const serviceURL = 'merchantpayment/jazz';
+    return this.http
+      .post(this.baseURL + serviceURL, payload)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
 }
