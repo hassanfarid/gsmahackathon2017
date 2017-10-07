@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ScanQrPage } from '../pages/scan-qr/scan-qr';
+import { GenerateQrPage } from '../pages/generate-qr/generate-qr';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +25,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Scan QR', component: ScanQrPage }
+      { title: 'Scan QR', component: ScanQrPage },
+      { title: 'Generate QR', component: GenerateQrPage }
     ];
 
   }

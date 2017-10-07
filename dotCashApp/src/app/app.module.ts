@@ -6,28 +6,34 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ScanQrPage } from '../pages/scan-qr/scan-qr';
+import { GenerateQrPage } from '../pages/generate-qr/generate-qr';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    ScanQrPage
+    ScanQrPage,
+    GenerateQrPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+
+    NgxQRCodeModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    ScanQrPage
+    ScanQrPage,
+    GenerateQrPage
   ],
   providers: [
     StatusBar,

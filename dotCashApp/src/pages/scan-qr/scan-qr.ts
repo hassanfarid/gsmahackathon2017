@@ -17,12 +17,15 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 })
 export class ScanQrPage {
 
+  result: string = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private qrScanner: QRScanner, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     // Optionally request the permission early
+    var _component = this;
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
@@ -31,8 +34,12 @@ export class ScanQrPage {
 
           // start scanning
           let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            alert(text);
+            _component.result = text;
 
+            this.toastCtrl.create({
+              message: text,
+              duration: 3000
+            }).present();
 
             console.log('Scanned something', text);
 
