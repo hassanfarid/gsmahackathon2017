@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { ScanQrPage } from '../pages/scan-qr/scan-qr';
 import { GenerateQrPage } from '../pages/generate-qr/generate-qr';
 
@@ -20,7 +19,6 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ScanQrPage,
     GenerateQrPage
   ],
@@ -34,7 +32,6 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ScanQrPage,
     GenerateQrPage
   ],

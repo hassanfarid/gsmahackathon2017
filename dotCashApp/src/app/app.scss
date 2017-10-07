@@ -14,3 +14,23 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.sidenav_behind {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sidenav {
+    background: #E8CBC0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #636FA4, #E8CBC0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #636FA4, #E8CBC0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.sidenav_button {
+    color:rgba(255,255,255, 0.9); 
+    font-weight: 900;   
+}
+
+.transparent {
+    background: none transparent;
+}
