@@ -15,7 +15,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   "Value": "hassan.seth@gmail.com@$input_msisdn:$output_mpin"
 }' 'https://developer.jazzcash.com.pk/v1.1/utilities/base64encode'
 
-output_base64={"aGFzc2FuLnNldGhAZ21haWwuY29tQDAzMDkyNzk1MjI4OjU2ZHhNcWxmMUU4PQ=="}
+output_base64={"EncodedValue"}
 
 # Check balance
 curl -X GET --header 'Accept: application/json' --header 'X-Correlation-ID: $guid' --header 'X-User-Credential-1: $output_base64' --header 'Content-type: application/json' --header 'Request-Date: 2017-09-14T4:15:19.969Z' --header 'Authorization: Bearer 6b3b9c2d-f2f7-3eb2-af15-ccdf30f55652' 'https://developer.jazzcash.com.pk/v1.1/mm/accounts/msisdn/03092795229/balance'
