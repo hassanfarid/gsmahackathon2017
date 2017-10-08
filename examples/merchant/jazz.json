@@ -1,0 +1,8 @@
+{
+  "operationType": "MerchantPayment",
+  "amount": "11.0",
+  "provider": [{
+    "providerName": "JazzCash",
+    "merchantId": "00132946"
+  }]
+}
