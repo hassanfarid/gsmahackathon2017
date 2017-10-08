@@ -13,7 +13,7 @@ export class ServiceProvider {
   }
 
   protected getProvider(name, payload) {
-  	for(int i=0; i< payload.provider.length(); i++)
+  	for(var i=0; i< payload.provider.length; i++)
   	{
   		var providername = payload.provider[i].providerName;
   		if (providername == name)

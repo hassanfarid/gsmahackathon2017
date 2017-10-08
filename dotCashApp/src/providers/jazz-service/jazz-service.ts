@@ -16,15 +16,15 @@ export class JazzServiceProvider extends ServiceProvider{
     super();
   }
 
-  const providerName = "JazzCash";
+  providerName = "JazzCash";
 
   getUserid() { return "03092795229"; }
 
   doMerchantPayment(payload) {
-  	var provider = this.getProvider(providerName, payload);
+  	var provider = this.getProvider(this.providerName, payload);
   	var body = {
   		amount: payload.amount,
-  		msisdn: getUserid(),
+  		msisdn: this.getUserid(),
   		merchantid: provider.merchantId
   	};
     const serviceURL = 'merchantpayment/jazz';
@@ -36,10 +36,10 @@ export class JazzServiceProvider extends ServiceProvider{
   }
 
   doBillPayment(payload) {
-    var provider = this.getProvider(providerName, payload);
+    var provider = this.getProvider(this.providerName, payload);
     var body = {
       amount: payload.amount,
-      msisdn: getUserid(),
+      msisdn: this.getUserid(),
       companycode: provider.companycode,
       mpin: "4321",
       billreference: provider.billref,
