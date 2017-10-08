@@ -106,7 +106,7 @@ export class ScanQrPage {
           })
           .subscribe((res) => {
             this.toastCtrl.create({
-              message: res,
+              message: "Merchant Payment is successful",
               duration: 3000
             }).present();
           }, (err) => {
@@ -122,7 +122,7 @@ export class ScanQrPage {
           })
           .subscribe((res) => {
             this.toastCtrl.create({
-              message: res,
+              message: "Merchant Payment is successful",
               duration: 3000
             }).present();
           }, (err) => {
@@ -140,7 +140,7 @@ export class ScanQrPage {
           })
           .subscribe((res) => {
             this.toastCtrl.create({
-              message: res,
+              message: "Bill Payment is successful",
               duration: 3000
             }).present();
           }, (err) => {
@@ -156,7 +156,7 @@ export class ScanQrPage {
           })
           .subscribe((res) => {
             this.toastCtrl.create({
-              message: res,
+              message: "Bill Payment is successful",
               duration: 3000
             }).present();
           }, (err) => {
