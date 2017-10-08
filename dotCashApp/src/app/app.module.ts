@@ -30,6 +30,7 @@ import { InterceptedHttp } from '../providers/http.interceptor';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
 
     NgxQRCodeModule,

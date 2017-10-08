@@ -14,8 +14,23 @@
   </ion-header>
 
 
-<ion-content padding style="background: none transparent;">
+<ion-content padding [ngClass]="{'transparent' : currentStep == 0}">
 
-    {{result}}
+    <div *ngIf="currentStep == 0">
+      <!-- Bar Code Scanning -->
+      <div *ngIf="gotError">
+          <button ion-button secondary (click)="startScan()"><ion-icon name='qr-scanner'></ion-icon>&nbsp;Retry Scan</button>
+      </div>
+    </div>
+
+    <div *ngIf="currentStep == 1">
+      <!-- Show QR Code details -->
+
+      <button ion-button secondary (click)="payAmount()"><ion-icon name='cash'></ion-icon>&nbsp;Pay Amount</button>
+    </div>
+
+    <div *ngIf="currentStep == 2">
+    </div>
+
 
 </ion-content>
