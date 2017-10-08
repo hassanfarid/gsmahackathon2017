@@ -1,5 +1,5 @@
 {
-  "operationType": "Bills",
+  "operationType": "Bill Payment",
   "name": "SSGC - Gas",
   "code": "gas_ssgc.sp",
   "billref": "2924735781",
