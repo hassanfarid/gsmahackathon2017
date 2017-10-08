@@ -1,0 +1,8 @@
+{
+	"operationType": "MerchantPayment",
+	"amount": "13.0",
+	"provider": [{
+		"ProviderName": "EasyPaisa",
+		"storeid": "6978"
+	}]
+}
