@@ -25,7 +25,7 @@ export class JazzServiceProvider extends ServiceProvider{
   	var body = {
   		amount: payload.amount,
   		msisdn: getUserid(),
-  		merchantid: provider.merchantid
+  		merchantid: provider.merchantId
   	};
     const serviceURL = 'merchantpayment/jazz';
     return this.http
