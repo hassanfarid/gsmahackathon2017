@@ -22,9 +22,22 @@
           <button ion-button secondary (click)="startScan()"><ion-icon name='qr-scanner'></ion-icon>&nbsp;Retry Scan</button>
       </div>
     </div>
-
+{{currentStep}}
     <div *ngIf="currentStep == 1">
       <!-- Show QR Code details -->
+      {{result}}
+
+      <ion-list radio-group [(ngModel)]="selectedProvider">
+          <ion-list-header>
+            Choose One Provider
+          </ion-list-header>
+        
+          <ion-item *ngFor="let provider of resultObject.provider">
+            <ion-label>{{provider.providerName}}</ion-label>
+            <ion-radio value="{{provider.providerName}}"></ion-radio>
+          </ion-item>
+      </ion-list>
+
 
       <button ion-button secondary (click)="payAmount()"><ion-icon name='cash'></ion-icon>&nbsp;Pay Amount</button>
     </div>
