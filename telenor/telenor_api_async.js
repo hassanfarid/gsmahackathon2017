@@ -1,4 +1,5 @@
-var request = require('sync-request');
+var request = require("request");
+var sync_request = require('sync-request');
 
 var generate_token = function () {
     console.log("called generate_token");
@@ -10,48 +11,62 @@ var generate_token = function () {
          'cache-control': 'no-cache',
          authorization: 'Basic U2VNS2xUYXo2OXBJN2twWWNQOWRuSmZPVkt0QnRhckQ6c0cwQnhBbWxiNHpXbGcwaQ==' } };
      
-    var api_request = request(options.method, options.url, {'headers': options.headers}, {'json': options.body});
+    var api_request = sync_request(options.method, options.url, {'headers': options.headers}, {'json': options.body});
             
     return JSON.parse(api_request.getBody('utf8')).access_token;
     };
 
-var get_companies_list = function () {
+var get_companies_list = function (res) {
     console.log("called get_companies_list");
     var token = generate_token();
     
-    var api_request = request('GET', 'https://api.telenor.com.pk/v1.1/mm/billcompanies', {
+    //console.log(token);
+    
+    var options = { method: 'GET',
+      url: 'https://api.telenor.com.pk/v1.1/mm/billcompanies',
       headers: 
-	   { 'postman-token': '146b2c06-a2db-b44f-7def-7c17ee05e74b',
-	     'cache-control': 'no-cache',
-	     'x-user-credential-1': 'Z3NtYXVzZXI6VCo1Jm5NOSM=',
-	     'x-channel': 'gsma1',
-	     'x-api-key': 'TelenorAPIGW',
-	     authorization: 'Bearer ' + token }
+       { 'postman-token': '07bb001c-8e45-00f2-59c5-a2b003b284ea',
+         'cache-control': 'no-cache',
+         'x-user-credential-1': 'Z3NtYXVzZXI6VCo1Jm5NOSM=',
+         'x-channel': 'gsma1',
+         'x-api-key': 'TelenorAPIGW',
+         authorization: 'Bearer ' + token } };
+    
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+      res.send(body);
     });
-    return api_request.getBody('utf8');
+
   };
 
-var bill_inquiry = function (req) {
+var bill_inquiry = function (req, res) {
     console.log("called bill_inquiry");
     var token = generate_token();
     
     var msisdn = req.msisdn || "923448741087", consumerno = req.consumerno || "9329120000", billcompany = req.billcompany || "gas_ssgc.sp";
     
     var options = { method: 'GET',
-      url: 'https://api.telenor.com.pk/v1.1/mm/account/msisdn@' + msisdn + '$consumerno@' + consumerno + '$billcompany@' + billcompany + '/bills',
-      headers: 
-       { 'postman-token': 'dce408a5-bfaa-f8bf-eb2c-4cd65962b4bb',
-         'cache-control': 'no-cache',
-         'x-user-credential-1': 'Z3NtYXVzZXI6VCo1Jm5NOSM=',
-         'x-channel': 'gsma1',
-         'x-api-key': 'TelenorAPIGW',
-         authorization: 'Bearer ' + token } };
+          url: 'https://api.telenor.com.pk/v1.1/mm/account/msisdn@' + msisdn + '$consumerno@' + consumerno + '$billcompany@' + billcompany + '/bills',
+          headers: 
+           { 'postman-token': 'dce408a5-bfaa-f8bf-eb2c-4cd65962b4bb',
+             'cache-control': 'no-cache',
+             'x-user-credential-1': 'Z3NtYXVzZXI6VCo1Jm5NOSM=',
+             'x-channel': 'gsma1',
+             'x-api-key': 'TelenorAPIGW',
+             authorization: 'Bearer ' + token } };
         
-        var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-        return api_request.getBody('utf8');
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+        
+          console.log(body);
+          res.send(body);
+        });
+
     };
 
-var bill_payment = function (req) {
+var bill_payment = function (req, res) {
     console.log("called bill_payment");
     var token = generate_token();
     
@@ -61,7 +76,7 @@ var bill_payment = function (req) {
     var options = { method: 'POST',
           url: 'https://api.telenor.com.pk/v1.1/mm/accounts/msisdn@' + msisdn +'/bills/0/payments',
           headers: 
-           { 'postman-token': '5df008f9-d3e1-d05f-e2ad-8a4459274c11',
+           { 'postman-token': '7eb70fbe-4a2a-1bb8-42e5-19f457bde99e',
              'cache-control': 'no-cache',
              'content-type': 'application/json',
              'x-user-credential-1': 'Nzc3OEA5MjM0NDg3NDEwODc6NTQzMjE=',
@@ -78,11 +93,15 @@ var bill_payment = function (req) {
                   paymentReferenceValue: billcompany } ] },
           json: true };
     
-    var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-    return api_request.getBody('utf8');
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+      res.send(body);
+    });
 };
 
-var merchant_payment = function (req) {
+var merchant_payment = function (req, res) {
     console.log("called merchant_payment");
     var token = generate_token();
     
@@ -92,11 +111,11 @@ var merchant_payment = function (req) {
         email = req.email || "abc@xyz.com",
         storeid = req.storeid || "6978",
         date = new Date().toISOString() || "2017-08-16T11:32:03.449Z";
-        
+    
     var options = { method: 'POST',
           url: 'https://api.telenor.com.pk/debitma/v1.1/mm/transactions',
           headers: 
-           { 'postman-token': '88a01a54-c526-b58e-7afb-3fbe344a470f',
+           { 'postman-token': '87669866-d8b1-c02b-f594-b3335f61fc1c',
              'cache-control': 'no-cache',
              'content-type': 'application/json',
              'x-user-credential-1': 'SGFja2F0aG9uOjEyYmNlMzc0ZTdiZTE1MTQyZTgxNzJmNjY4ZGEwMGQ4',
@@ -112,14 +131,18 @@ var merchant_payment = function (req) {
              "debitParty": [ { "key": "msisdn", "value": msisdn } ],
              "creditParty": [ { "key": "storeid", "value": storeid } ],
              "senderKyc": { "emailAddress": email },
-             "requestingOrganisationTransactionReference": "1234567" }
-             };
-  
-    var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-    return api_request.getBody('utf8');
+             "requestingOrganisationTransactionReference": "1234567" },
+          json: true };
+        
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+        
+          console.log(body);
+          res.send(body);
+        });
 };
 
-var money_transfer_to_MA = function (req) {
+var money_transfer_to_MA = function (req, res) {
     console.log("called money_transfer_to_MA");
     var token = generate_token();
     
@@ -151,11 +174,15 @@ var money_transfer_to_MA = function (req) {
              recipientKyc: { Name: 'test2' } },
           json: true };
     
-    var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-    return api_request.getBody('utf8');
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+      res.send(body);
+    });
 };
 
-var money_transfer_to_bank = function (req) {
+var money_transfer_to_bank = function (req, res) {
     console.log("called money_transfer_to_bank");
     var token = generate_token();
     
@@ -193,11 +220,15 @@ var money_transfer_to_bank = function (req) {
              senderKyc: { Name: 'test' } },
           json: true };
     
-    var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-    return api_request.getBody('utf8');
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+      res.send(body);
+    });
 };
 
-var send_money_to_MA = function (req) {
+var send_money_to_MA = function (req, res) {
     console.log("called send_money_to_MA");
     var token = generate_token();
     
@@ -229,12 +260,16 @@ var send_money_to_MA = function (req) {
          senderKyc: { idDocument: [ { idType: 'nationalidcard', idNumber: nic } ] } },
       json: true };
     
-    var api_request = request(options.method, options.url, {'headers': options.headers, 'json': options.body});
-    return api_request.getBody('utf8');
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+      res.send(body);
+    });
 };
 
 module.exports = {
-  generate_token: generate_token, 
+//   generate_token: generate_token, 
   get_companies_list: get_companies_list,
   bill_inquiry: bill_inquiry,
   bill_payment: bill_payment,
