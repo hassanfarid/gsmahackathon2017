@@ -1,9 +1,9 @@
 {
   "operationType": "Bills",
-  "name": "gas_ssgc.sp",
+  "name": "SSGC - Gas",
   "code": "gas_ssgc.sp",
   "billref": "2924735781",
-  "amountDue": "1.0",
+  "amount": "1.0",
   "paymenttype": "payment",
   "provider": [{
     "providerName": "EasyPaisa"

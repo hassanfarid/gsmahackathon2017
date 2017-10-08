@@ -1,9 +1,9 @@
 {
   "operationType": "Bills",
-  "name": "Test Company",
+  "name": "PTCL Landline",
   "code": "71",
   "billref": "10593039",
-  "amountDue": "17.0",
+  "amount": "17.0",
   "paymenttype": "partialpayment",
   "provider": [{
     "providerName": "JazzCash"
