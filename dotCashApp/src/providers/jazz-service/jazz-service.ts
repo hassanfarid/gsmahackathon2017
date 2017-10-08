@@ -20,14 +20,14 @@ export class JazzServiceProvider extends ServiceProvider{
 
   getUserid() { return "03092795229"; }
 
-  doBillPayment(payload) {
+  doMerchantPayment(payload) {
   	var provider = this.getProvider(providerName, payload);
   	var body = {
   		amount: payload.amount,
   		msisdn: getUserid(),
   		merchantid: provider.merchantid
   	};
-    const serviceURL = 'billpayment/jazz';
+    const serviceURL = 'merchantpayment/jazz';
     return this.http
       .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
@@ -35,8 +35,8 @@ export class JazzServiceProvider extends ServiceProvider{
 
   }
 
-  doMerchantPayment(payload) {
-    const serviceURL = 'merchantpayment/jazz';
+  doBillPayment(payload) {
+    const serviceURL = 'billpayment/jazz';
     return this.http
       .post(this.baseURL + serviceURL, payload)
       .map(res => res.json())

@@ -38,7 +38,7 @@ export class TelenorServiceProvider extends ServiceProvider {
 
   }
 
-  doBillPayment(payload) {
+  doMerchantPayment(payload) {
     var provider = this.getProvider(providerName, payload);
     var body = {
       msisdn: getUserid(),
@@ -47,7 +47,7 @@ export class TelenorServiceProvider extends ServiceProvider {
       email: "asy@gmail.com",
       storeid: provider.storeid
     };
-    const serviceURL = 'billpayment/telenor';
+    const serviceURL = 'merchantpayment/telenor';
     return this.http
       .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
@@ -55,8 +55,8 @@ export class TelenorServiceProvider extends ServiceProvider {
 
   }
 
-  doMerchantPayment(payload) {
-    const serviceURL = 'merchantpayment/telenor';
+  doBillPayment(payload) {
+    const serviceURL = 'billpayment/telenor';
     return this.http
       .post(this.baseURL + serviceURL, payload)
       .map(res => res.json())
