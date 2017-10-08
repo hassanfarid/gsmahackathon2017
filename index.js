@@ -19,6 +19,7 @@ app.get('/',function(req,res) {
 });
 
 app.post('/merchantpayment/jazz',function(req,res) {
+	console.log(req.body);
 	res.send(jazz.merchant_payment(req.body));
 });
 app.post('/billpayment/jazz',function(req,res) {
@@ -67,6 +68,7 @@ app.post('/sendmoneytoMA/telenor',function(req,res) {
 	res.send(telenor.send_money_to_MA(req.body));
 });
 
-app.listen(process.env.PORT || 3000,function(){
-	console.log("listening on 3000");
+app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+  var addr = app.address();
+  console.log("server listening at", addr.address + ":" + addr.port);
 });
