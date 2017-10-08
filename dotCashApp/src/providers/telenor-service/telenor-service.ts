@@ -12,9 +12,13 @@ import { ServiceProvider } from '../service/service';
 @Injectable()
 export class TelenorServiceProvider extends ServiceProvider {
 
+  const providerName = "EasyPaisa";
+
   constructor(public http: Http) {
     super();
   }
+
+  getUserid() { return "923448741087"; }
 
   billInquiry(payload) {
     const serviceURL = 'billinquiry';
@@ -35,9 +39,17 @@ export class TelenorServiceProvider extends ServiceProvider {
   }
 
   doBillPayment(payload) {
+    var provider = this.getProvider(providerName, payload);
+    var body = {
+      msisdn: getUserid(),
+      amount: payload.amount,
+      currency: "PKR",
+      email: "asy@gmail.com",
+      storeid: provider.storeid
+    };
     const serviceURL = 'billpayment/telenor';
     return this.http
-      .post(this.baseURL + serviceURL, payload)
+      .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
       .catch(this.handleError);
 

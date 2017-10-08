@@ -16,10 +16,20 @@ export class JazzServiceProvider extends ServiceProvider{
     super();
   }
 
+  const providerName = "JazzCash";
+
+  getUserid() { return "03092795229"; }
+
   doBillPayment(payload) {
+  	var provider = this.getProvider(providerName, payload);
+  	var body = {
+  		amount: payload.amount,
+  		msisdn: getUserid(),
+  		merchantid: provider.merchantid
+  	};
     const serviceURL = 'billpayment/jazz';
     return this.http
-      .post(this.baseURL + serviceURL, payload)
+      .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
       .catch(this.handleError);
 

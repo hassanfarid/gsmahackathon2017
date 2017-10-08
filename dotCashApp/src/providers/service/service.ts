@@ -12,4 +12,14 @@ export class ServiceProvider {
     return Observable.throw(error);
   }
 
+  protected getProvider(name, payload) {
+  	for(int i=0; i< payload.provider.length(); i++)
+  	{
+  		var providername = payload.provider[i].providerName;
+  		if (providername == name)
+  			return payload.provider[i];
+  	}
+  	return null;
+  }
+
 }
