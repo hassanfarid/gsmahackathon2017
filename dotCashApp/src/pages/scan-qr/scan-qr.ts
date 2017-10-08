@@ -26,6 +26,8 @@ export class ScanQrPage {
   result: string = '';
   resultObject: any = {};
   gotError: boolean = false;
+  success:boolean = false;
+  randomNumber: number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private qrScanner: QRScanner, public toastCtrl: ToastController, private androidPermissions: AndroidPermissions,
@@ -97,12 +99,17 @@ export class ScanQrPage {
       });
   }
 
+  getRandom() {
+    this.randomNumber =  Math.round(new Date().getTime());
+  }
+
   payAmount(selectedProvider: string) {
     if (this.resultObject.operationType == "MerchantPayment") {
       if (selectedProvider == "JazzCash")
         this.jazzServiceProvider.doMerchantPayment(this.resultObject)
           .finally(() => {
-
+            this.success = true;
+            this.getRandom();
           })
           .subscribe((res) => {
             this.toastCtrl.create({
@@ -110,6 +117,7 @@ export class ScanQrPage {
               duration: 3000
             }).present();
           }, (err) => {
+            console.log(JSON.stringify(err));
             this.toastCtrl.create({
               message: err,
               duration: 3000
@@ -118,7 +126,8 @@ export class ScanQrPage {
       else if (selectedProvider == "EasyPaisa")
         this.telenorServiceProvider.doMerchantPayment(this.resultObject)
           .finally(() => {
-
+            this.success = true;
+            this.getRandom();
           })
           .subscribe((res) => {
             this.toastCtrl.create({
@@ -126,6 +135,7 @@ export class ScanQrPage {
               duration: 3000
             }).present();
           }, (err) => {
+            console.log(JSON.stringify(err));
             this.toastCtrl.create({
               message: err,
               duration: 3000
@@ -136,7 +146,8 @@ export class ScanQrPage {
       if (selectedProvider == "JazzCash")
         this.jazzServiceProvider.doBillPayment(this.resultObject)
           .finally(() => {
-
+            this.success = true;
+            this.getRandom();
           })
           .subscribe((res) => {
             this.toastCtrl.create({
@@ -144,6 +155,7 @@ export class ScanQrPage {
               duration: 3000
             }).present();
           }, (err) => {
+            console.log(JSON.stringify(err));
             this.toastCtrl.create({
               message: err,
               duration: 3000
@@ -152,7 +164,8 @@ export class ScanQrPage {
       else if (selectedProvider == "EasyPaisa")
         this.telenorServiceProvider.doBillPayment(this.resultObject)
           .finally(() => {
-
+            this.success = true;
+            this.getRandom();
           })
           .subscribe((res) => {
             this.toastCtrl.create({
@@ -160,6 +173,7 @@ export class ScanQrPage {
               duration: 3000
             }).present();
           }, (err) => {
+            console.log(JSON.stringify(err));
             this.toastCtrl.create({
               message: err,
               duration: 3000
