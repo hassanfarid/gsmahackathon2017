@@ -36,9 +36,18 @@ export class JazzServiceProvider extends ServiceProvider{
   }
 
   doBillPayment(payload) {
+    var provider = this.getProvider(providerName, payload);
+    var body = {
+      amount: payload.amount,
+      msisdn: getUserid(),
+      companycode: provider.companycode,
+      mpin: "4321",
+      billreference: provider.billref,
+      paymenttype: provider.paymenttype
+    };
     const serviceURL = 'billpayment/jazz';
     return this.http
-      .post(this.baseURL + serviceURL, payload)
+      .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
       .catch(this.handleError);
   }

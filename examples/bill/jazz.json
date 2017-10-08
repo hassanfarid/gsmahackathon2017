@@ -1,0 +1,11 @@
+{
+  "operationType": "Bills",
+  "name": "Test Company",
+  "code": "71",
+  "billref": "10593039",
+  "amountDue": "17.0",
+  "paymenttype": "partialpayment",
+  "provider": [{
+    "providerName": "JazzCash"
+  }]
+}

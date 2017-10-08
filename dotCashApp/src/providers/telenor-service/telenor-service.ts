@@ -56,9 +56,17 @@ export class TelenorServiceProvider extends ServiceProvider {
   }
 
   doBillPayment(payload) {
+    var provider = this.getProvider(providerName, payload);
+    var body = {
+      amount: payload.amount,
+      msisdn: getUserid(),
+      billcompany: provider.companycode,
+      consumerno: provider.billref,
+      currency: "PKR"
+    };
     const serviceURL = 'billpayment/telenor';
     return this.http
-      .post(this.baseURL + serviceURL, payload)
+      .post(this.baseURL + serviceURL, body)
       .map(res => res.json())
       .catch(this.handleError);
   }
