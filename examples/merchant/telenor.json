@@ -1,8 +1,9 @@
 {
 	"operationType": "MerchantPayment",
+	"name": "Symbios.pk",
 	"amount": "13.0",
 	"provider": [{
-		"ProviderName": "EasyPaisa",
+		"providerName": "EasyPaisa",
 		"storeid": "6978"
 	}]
 }

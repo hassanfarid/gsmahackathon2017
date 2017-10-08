@@ -1,5 +1,6 @@
 {
   "operationType": "MerchantPayment",
+  "name": "BookMe.pk",
   "amount": "11.0",
   "provider": [{
     "providerName": "JazzCash",
