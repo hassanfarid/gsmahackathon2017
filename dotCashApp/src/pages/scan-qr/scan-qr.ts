@@ -26,7 +26,6 @@ export class ScanQrPage {
   result: string = '';
   resultObject: any = {};
   gotError: boolean = false;
-  selectedProvider: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private qrScanner: QRScanner, public toastCtrl: ToastController, private androidPermissions: AndroidPermissions,
@@ -98,10 +97,9 @@ export class ScanQrPage {
       });
   }
 
-  payAmount() {
+  payAmount(selectedProvider: string) {
     if (this.resultObject.operationType == "MerchantPayment") {
-      console.log(this.selectedProvider);
-      if (this.selectedProvider == "JazzCash")
+      if (selectedProvider == "JazzCash")
         this.jazzServiceProvider.doMerchantPayment(this.resultObject)
           .finally(() => {
 
@@ -117,8 +115,42 @@ export class ScanQrPage {
               duration: 3000
             }).present();
           });
-      else if (this.selectedProvider == "EasyPaisa")
+      else if (selectedProvider == "EasyPaisa")
         this.telenorServiceProvider.doMerchantPayment(this.resultObject)
+          .finally(() => {
+
+          })
+          .subscribe((res) => {
+            this.toastCtrl.create({
+              message: res,
+              duration: 3000
+            }).present();
+          }, (err) => {
+            this.toastCtrl.create({
+              message: err,
+              duration: 3000
+            }).present();
+          });
+    }
+    else if (this.resultObject.operationType == "Bills") {
+      if (selectedProvider == "JazzCash")
+        this.jazzServiceProvider.doBillPayment(this.resultObject)
+          .finally(() => {
+
+          })
+          .subscribe((res) => {
+            this.toastCtrl.create({
+              message: res,
+              duration: 3000
+            }).present();
+          }, (err) => {
+            this.toastCtrl.create({
+              message: err,
+              duration: 3000
+            }).present();
+          });
+      else if (selectedProvider == "EasyPaisa")
+        this.telenorServiceProvider.doBillPayment(this.resultObject)
           .finally(() => {
 
           })

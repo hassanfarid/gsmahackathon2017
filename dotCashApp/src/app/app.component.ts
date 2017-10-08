@@ -24,8 +24,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { icon: 'home', title: 'Home', component: HomePage },
-      { icon: 'qr-scanner', title: 'Pay Merchant', component: ScanQrPage },
-      { icon: 'cash', title: 'Receive Amount', component: GenerateQrPage }
+      { icon: 'qr-scanner', title: 'Pay From Account', component: ScanQrPage },
+      { icon: 'cash', title: 'Receive Into Amount', component: GenerateQrPage }
     ];
 
   }
