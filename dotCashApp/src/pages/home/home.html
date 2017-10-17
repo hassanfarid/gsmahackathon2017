@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="assets/images/logo.png" height="100px" style="text-align:center;">
+  <h4>Payment 2tap Away</h4>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button secondary (click)="payMerchant()">
+          <ion-icon name='qr-scanner'></ion-icon>&nbsp;Pay</button>
+      </ion-col>
+      <ion-col col-6>
+        <ul>
+          <li>Utility Bills</li>
+          <li>Product Delivery</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ul>
+          <li>Bank Account</li>
+          <li>Mobile Account</li>
+        </ul>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button secondary (click)='receiveAmount()'>
+          <ion-icon name='cash'></ion-icon>&nbsp;Receive</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

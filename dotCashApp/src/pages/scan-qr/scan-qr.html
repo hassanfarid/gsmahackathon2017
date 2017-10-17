@@ -1,0 +1,70 @@
+<!--
+  Generated template for the ScanQrPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pay From Account (Scan QR)</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="transparent">
+
+  <div *ngIf="currentStep == 0" class="transparent">
+    <!-- Bar Code Scanning -->
+    <div *ngIf="gotError">
+      <button ion-button secondary (click)="startScan()">
+        <ion-icon name='qr-scanner'></ion-icon>&nbsp;Retry Scan</button>
+    </div>
+  </div>
+  <div *ngIf="currentStep == 1">
+    <!-- Show QR Code details -->
+    <ion-card>
+      
+      <ion-card-header>
+        {{resultObject.operationType}}
+      </ion-card-header>
+
+      <div class="header-image" align="right">
+          <img src="assets/images/daraz-logo.png" *ngIf="resultObject.name == 'Daraz'">
+      </div>
+
+      <ion-list>
+        <button ion-item>
+          <ion-icon name="cash" item-start></ion-icon>
+          Amount : Rs.{{resultObject.amount}}
+        </button>
+
+
+      </ion-list>
+    </ion-card>
+
+    <ion-list>
+      <ion-list-header>
+        Choose One Provider for Payment
+      </ion-list-header>
+
+      <ion-item *ngFor="let provider of resultObject.provider">
+        <img height="60px" src="assets/images/easypaisa-logo.png" *ngIf="provider.providerName == 'EasyPaisa'">
+        <img height="90px" src="assets/images/jazzcash-logo.png" *ngIf="provider.providerName == 'JazzCash'">
+        <button ion-button outline item-end icon-left (click)="payAmount(provider.providerName)">
+          <ion-icon name="cash"></ion-icon>
+          Pay
+        </button>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+  <div *ngIf="success">
+    Payment is successful, here is reference code: <b>{{ randomNumber }}</b>
+  </div>
+
+
+</ion-content>

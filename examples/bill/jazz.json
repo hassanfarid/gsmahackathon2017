@@ -1,0 +1,11 @@
+{
+  "operationType": "Bill Payment",
+  "name": "PTCL Landline",
+  "code": "71",
+  "billref": "10593039",
+  "amount": "17.0",
+  "paymenttype": "partialpayment",
+  "provider": [{
+    "providerName": "JazzCash"
+  }]
+}

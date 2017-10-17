@@ -1,0 +1,12 @@
+{
+  "operationType": "MerchantPayment",
+  "name": "Daraz",
+  "amount": "15.0",
+  "provider": [{
+    "providerName": "JazzCash",
+    "merchantId": "00132946"
+  }, {
+    "providerName": "EasyPaisa",
+    "storeid": "6978"
+  }]
+}
