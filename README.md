@@ -1,6 +1,7 @@
 # GSMA Hackathon 2017
 
-# dotCash - Unified payment solution with integration with different payment solutions. 
+# dotCash
+Unified payment solution platform, supports integration with different payment solutions.
 
 
 ## Team Members:
